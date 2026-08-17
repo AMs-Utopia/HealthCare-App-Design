@@ -1,0 +1,39 @@
+## Project Milestone 2 – Health Care App
+
+During the development of this project, AI tools were used as an assistance and learning resource. The primary AI tools used were **ChatGPT** and **Claude AI**.
+
+### Areas Where AI Was Used
+
+1. **Project Setup and Configuration**
+   - Used ChatGPT and Claude AI to understand the Flutter project setup, folder structure, dependencies, and configuration.
+   - Used AI assistance to troubleshoot setup and development-related issues.
+
+2. **Understanding Code and Functionalities**
+   - Used AI to explain existing code and understand how different parts of the application work.
+   - Used AI assistance to understand the purpose of functions, classes, widgets, API calls, models, and application logic.
+
+3. **Application Logic and Implementation**
+   - Used AI as an assistance while developing and structuring logic for implemented functionalities.
+   - AI suggestions were reviewed, modified, and integrated according to the requirements of the project.
+
+4. **Database and Wireframe Synchronization**
+   - Used AI to understand how the application's wireframes, database/ERD, API structure, and Flutter implementation should correspond with each other.
+   - AI was used to identify relationships between screens, database entities, and application features.
+
+5. **Debugging and Problem Solving**
+   - Used AI to identify possible causes of errors and suggest solutions during development.
+   - The suggested solutions were tested and adjusted according to the actual project requirements.
+
+### AI Tools Used
+
+- **ChatGPT** – Used mainly for understanding concepts, explaining code, debugging, planning, and reviewing implementation logic.
+- **Claude AI** – Used mainly for development assistance, code generation suggestions, project structure, and implementation logic.
+
+### Responsibility and Verification
+
+AI-generated suggestions were treated as development assistance rather than as authoritative solutions. The implementation was reviewed, tested, and adjusted to match the project's requirements, wireframes, database design, and intended functionality.
+The use of AI does not replace the developer's responsibility for understanding, testing, and explaining the submitted implementation.
+
+23101088
+
+AHNAF_MUHTASIM :)
