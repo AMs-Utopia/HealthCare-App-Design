@@ -1,0 +1,168 @@
+name: healthcare_app
+description: "CSE489 Health Care mobile application."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.0
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+  # Used to call the PHP REST API over HTTP. The app never talks to MySQL
+  # directly - every database operation goes through healthcare_api.
+  http: ^1.2.2
+
+  # Lets the patient choose a profile photo from their gallery or camera on
+  # the Basic Info screen. The file is then posted to
+  # api/upload_profile_image.php - this package only picks it, it does not
+  # upload anything itself.
+  image_picker: ^1.1.2
+
+  # Opens the phone's dialer on the Call a Hospital screen, via a tel: URI.
+  # It only OPENS the dialer with the number filled in - it never places a
+  # call, so the patient always presses the green button themselves. Android
+  # 11+ also needs the <queries> DIAL entry in AndroidManifest.xml, or the
+  # launch silently does nothing.
+  url_launcher: ^6.3.1
+  # Lets the patient choose a document on the Health Records screen. Unlike
+  # image_picker, which can only reach the gallery and the camera, this opens
+  # the system file browser - so a PDF lab report or a DOC prescription can be
+  # filed, not just a photograph of one. Like image_picker it only PICKS the
+  # file; the upload is a plain http.MultipartRequest to
+  # api/upload_health_record.php.
+  file_picker: ^12.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+
+  # Build-time only - these generate the Android launcher icon and the startup
+  # splash screen, then take no part in the app itself. Nothing from them ends
+  # up inside the APK.
+  flutter_launcher_icons: ^0.14.0
+  flutter_native_splash: ^2.4.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
+
+# =============================================================================
+# Launcher icon - the icon on the phone's home screen.
+# Regenerate after changing the logo with:  dart run flutter_launcher_icons
+#
+# The sources live in assets/launcher/ rather than assets/images/ because they
+# are read by the generator at build time only, and are deliberately NOT listed
+# under flutter.assets above - bundling them would make the APK bigger for no
+# reason.
+# =============================================================================
+flutter_launcher_icons:
+  android: true
+  ios: false
+
+  # Android 7 and older: one flat square icon, corners rounded by the launcher.
+  image_path: "assets/launcher/icon_legacy.png"
+
+  # Android 8+: two layers, so each launcher can apply its own mask shape. The
+  # background is the logo's own colour, which is why the inset foreground
+  # leaves no visible seam.
+  min_sdk_android: 21
+  adaptive_icon_background: "#F2F4F3"
+  adaptive_icon_foreground: "assets/launcher/icon_foreground.png"
+
+  # The generator otherwise insets the foreground a further 16%, which
+  # would shrink the logo to about a third of the icon. icon_foreground.png
+  # is already sized so its diagonal exactly fills the mask safe zone, so
+  # the extra inset is turned off rather than compensated for.
+  adaptive_icon_foreground_inset: 0
+
+# =============================================================================
+# Startup splash - what shows while the Flutter engine boots.
+# Regenerate with:  dart run flutter_native_splash:create
+#
+# The colour is AppColors.background, which is also the logo's own background
+# and the scaffold colour of every screen, so the splash fades into the sign in
+# screen instead of flashing a different shade first.
+# =============================================================================
+flutter_native_splash:
+  color: "#F2F4F3"
+  image: "assets/launcher/splash_logo.png"
+  android: true
+  ios: false
+  web: false
+
+  # Android 12 replaced the old splash with its own, which draws the icon in a
+  # circle and ignores the settings above, so it needs its own sizing.
+  android_12:
+    image: "assets/launcher/splash_logo_android12.png"
+    color: "#F2F4F3"
+    icon_background_color: "#F2F4F3"

@@ -1,0 +1,158 @@
+Final Milestone – Health Care App
+
+Use of AI Tools
+
+During this project, I used AI tools as a learning and development assistant. The main AI tools I used were ChatGPT and Claude AI.
+
+AI helped me understand unfamiliar topics, explain code, solve errors, and think about different ways to implement features. However, I reviewed, tested, and modified the suggestions before using them in the project.
+
+Areas Where AI Was Used
+
+1. Project Setup and Configuration
+AI helped me understand the Flutter project structure, folders, dependencies, and configuration. It was also useful when I faced setup or development problems.
+
+2. Understanding Code and Features
+I used AI to explain existing code and understand how different parts of the application work. This included functions, classes, widgets, API calls, models, and application logic.
+
+3. Application Logic and Implementation
+AI helped me think about how to implement different features. I used the suggestions as guidance, then reviewed and modified them based on the requirements of my project.
+
+4. Database, API, and Wireframe Connection
+AI helped me understand how the wireframes, database/ERD, API, and Flutter application should work together. It also helped me understand the relationship between screens, database tables, and application features.
+
+5. Debugging and Problem Solving
+When I faced errors, I used AI to understand the possible causes and find possible solutions. I then tested the solutions and changed them when necessary.
+Complex Parts of the Project and How AI Helped
+
+1. Making User IDs More Secure
+At first, the API trusted the patient_id sent in a request. For example, if someone sent patient_id=6, the system could treat that person as patient 6. This could create a security problem.
+To solve this, I learned about different authentication methods, including server sessions and signed tokens. AI helped me understand the differences between these options.
+I decided to use signed tokens and added the security check in a shared file so that API endpoints would be protected by default. The final design decision and implementation were done by me.
+
+2. Checking Identity and Permission Separately
+There is a difference between knowing who a user is and knowing what that user is allowed to access.
+For example, the system may confirm that someone is a doctor, but that does not automatically mean the doctor should be allowed to view every patient's medical record.
+AI helped me understand this difference. I then implemented rules so that a doctor could only access information related to patients who had a valid relationship or appointment with that doctor.
+
+3. Creating a Smart Doctor Search
+The doctor search needed to understand different types of information from one search sentence.
+For example:
+gastric doctor in Dhanmondi
+
+The system needs to understand that the user may be searching based on speciality and location.
+AI helped me think about how to process this search. I decided to handle the keyword mapping on the server using keyword tables and condition-to-department mappings.
+The search logic and local keyword mappings were created based on the project's needs.
+
+4. Converting Doctor Schedules into Appointment Slots
+A doctor's schedule may contain a time range such as:
+4:00 PM - 10:00 PM
+
+This needed to be converted into individual appointment slots.
+
+I had to make sure that the same time calculation worked when:
+- Booking an appointment
+- Rescheduling an appointment
+- Showing the expected appointment time to the patient
+
+AI helped me check the time calculations and possible edge cases, such as the last available slot, off days, and full schedules.
+I decided to keep the time calculation in one separate file so that the same logic could be used throughout the application.
+
+5. Searching for Medicines
+Instead of limiting doctors to a small medicine list stored only in our database, the system searches medicine brands from MedEx while the doctor is typing.
+The local MEDICINE table is then used to store medicines that have actually been prescribed.
+AI helped me understand how to handle the search response and what to do if the external search fails.
+To avoid breaking the prescription system, the application falls back to previously prescribed medicines if the external search does not return results.
+
+6. Combining Different Notifications
+
+The application has different types of notifications, including:
+- Appointment updates
+- Medicine orders
+- Lab bookings
+
+These notifications come from different database tables.
+
+AI helped me compare two approaches:
+1. Using SQL UNION
+2. Combining the notification data in PHP
+
+I chose to combine the data in PHP because each type of notification has different information. Each notification is tagged by its type and then sorted by time.
+
+7. Running the App on an Emulator and Real Phone
+The application connects to XAMPP using HTTP.
+The Android emulator uses:
+10.0.2.2
+
+However, a real phone needs the computer's LAN IP address or another connection method.
+AI helped me understand the difference between emulator and real-device networking.
+To make this easier, I kept the API address in one configuration file. This means I only need to change one setting when switching between the emulator and a real phone.
+
+8. Fixing Android Build Problems
+
+While adding packages such as image_picker and file_picker, I faced Android and Kotlin build errors.
+AI helped me understand the Gradle errors and possible causes.
+Some suggested solutions did not work, so I tested different approaches until finding a working solution.
+I also faced an issue because the API of file_picker had changed from what many older tutorials showed. I learned that on Android, a selected file may provide a content:// URI instead of a normal file path.
+
+Because of this, the application reads the file bytes instead of always depending on the file path.
+
+9. Fixing a Crash After Uploading a Health Record
+
+I faced a problem where the application worked normally until a health record was successfully uploaded.
+After uploading, the screen reloaded its data. The application was still holding an old object, which did not match the newly loaded objects. This caused a Flutter assertion error.
+AI helped me understand the error.
+I fixed it by storing the record type's code instead of storing the entire object. The application then finds the correct object from the current list.
+I applied the same idea to other dropdowns that reload their data.
+
+10. Using Colors Safely for Health Status
+On the health dashboard, colors can represent important health information.
+I found that some colors did not have enough contrast against the white background. AI helped me check the contrast and think about color accessibility.
+To make the information clearer, the application does not depend only on color. It also uses icons and text to explain the health status.
+The application also does not make medical judgments by itself. It only displays the values and the information provided by the system.
+
+How I Used AI Effectively
+
+- I asked small and specific questions instead of asking AI to create an entire feature at once.
+- I tried to understand a problem before using a suggested solution.
+- I compared different approaches before making important design decisions.
+- I kept the wireframes and database design as the main reference for the project.
+- I tested features by actually running the application.
+- I used AI to review my own work and identify possible problems.
+- I manually maintained consistency in the project structure, naming, API handling, and response format.
+
+Limits of AI Usage
+
+AI was used as an assistant, not as a replacement for my own work.
+The wireframes, screen flow, and database design were prepared before using AI. AI suggestions were adjusted to match the project's requirements.
+Not every AI suggestion was correct. For example, I received outdated package information and some suggested fixes that did not solve the problem.
+Therefore, every important suggestion was tested before being used.
+The code was written, assembled, corrected, and tested by me. AI was mainly used as a learning and development tool, similar to documentation, tutorials, and other programming resources.
+
+
+AI Tools Used
+
+ChatGPT
+Used mainly for:
+- Understanding programming concepts
+- Explaining code
+- Debugging
+- Planning
+- Reviewing implementation logic
+
+Claude AI
+Used mainly for:
+- Development assistance
+- Code suggestions
+- Project structure
+- Implementation ideas
+
+Responsibility and Verification
+
+AI suggestions were treated as suggestions, not as guaranteed solutions.
+
+I reviewed, tested, and changed the implementation to match the project's requirements, wireframes, database design, and intended functionality.
+
+Using AI does not remove my responsibility for understanding the code. I made sure to test the features on both the Android emulator and a physical device.
+
+AHNAF MUHTASIM 
+23101088
