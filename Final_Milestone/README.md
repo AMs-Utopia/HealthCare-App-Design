@@ -490,7 +490,7 @@ The `LayoutBuilder` feeds a `ConstrainedBox` a `minHeight` computed by subtracti
 
 | | |
 |---|---|
-| **Course** | CSE 489 — Mobile Application Development |
+| **Course** | CSE 489 — Android App Development |
 | **Student** | Ahnaf Muhtasim |
 | **ID** | 23101088 |
 
